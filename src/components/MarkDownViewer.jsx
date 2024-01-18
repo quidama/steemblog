@@ -12,13 +12,12 @@ export default function MarkDownViewer({ content }) {
         className='prose max-w-none'
         remarkPlugins={[remarkGfm]}
         components={{
-          code({ node, inline, className, children, ...props }) {
+          code({ node, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '');
-            return !inline && match ? (
+            return match ? (
               <SyntaxHighlighter
                 language={match[1]}
                 PreTag='div'
-                {...props}
                 style={materialDark}
               >
                 {String(children).replace(/\n$/, '')}
