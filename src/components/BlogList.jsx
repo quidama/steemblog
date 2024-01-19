@@ -20,7 +20,6 @@ export default function BlogList() {
   const handleIntersect = useCallback(
     ([entry]) => {
       if (entry.isIntersecting) {
-        console.log('excute : ', (i += 1));
         loadMoreBlogs();
       }
     },
@@ -52,7 +51,6 @@ export default function BlogList() {
         limit: 5,
       }).then((result) => {
         const extendLastBlog = result[result.length - 1];
-        console.log(extendLastBlog.permlink);
         if (result.length > 1) {
           const resultFirstBlog = result.shift();
           if (oldPermlink.current !== extendLastBlog.permlink) {
@@ -62,11 +60,9 @@ export default function BlogList() {
             lastAuthor.current = author;
             lastPermlink.current = permlink;
             showMore.current = true;
-            console.log('showMore.current-final:', showMore.current);
             oldPermlink.current = permlink;
           } else {
             showMore.current = false;
-            console.log('showMore.current-final:', showMore.current);
           }
         } else {
           alert('더이상의 Blog가 없습니다.');

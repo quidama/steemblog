@@ -1,8 +1,8 @@
 'use client';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import ReactMarkdown from 'react-markdown'; // 마크다운을 HTML로 변환하는 라이브러리
+import remarkGfm from 'remark-gfm'; //마크다운에 GitHub Flavored Markdown(GFM) 확장을 적용하는 플러그인
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'; //코드 블록을 강조 표시하는 라이브러리
+import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'; //코드 블록의 스타일을 지정하는 테마
 import Image from 'next/image';
 
 export default function MarkDownViewer({ content }) {
@@ -12,18 +12,18 @@ export default function MarkDownViewer({ content }) {
         className='prose max-w-none'
         remarkPlugins={[remarkGfm]}
         components={{
-          code({ node, className, children, ...props }) {
+          code({ children, className, node, ...rest }) {
             const match = /language-(\w+)/.exec(className || '');
             return match ? (
               <SyntaxHighlighter
-                language={match[1]}
+                {...rest}
                 PreTag='div'
+                children={String(children).replace(/\n$/, '')}
+                language={match[1]}
                 style={materialDark}
-              >
-                {String(children).replace(/\n$/, '')}
-              </SyntaxHighlighter>
+              />
             ) : (
-              <code className={className} {...props}>
+              <code className={className} {...rest}>
                 {children}
               </code>
             );

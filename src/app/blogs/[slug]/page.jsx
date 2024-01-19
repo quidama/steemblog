@@ -5,7 +5,6 @@ export default async function BlogPage({ params: { slug } }) {
   console.log(slug);
   try {
     const blog = await steem.api.getContentAsync('section-2', slug);
-    console.log(blog);
     return (
       <article className='rounded-2xl overflow-hidden bg-gray-100 shadow-lg m-4'>
         <BlogContent blog={blog} />
