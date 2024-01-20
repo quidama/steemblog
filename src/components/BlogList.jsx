@@ -102,19 +102,19 @@ export default function BlogList({ tag }) {
     switch (tag) {
       case 'section-2':
         sectionTitle.current = '국제문제';
-        sectionDescription.current = '국제문제 타이틀에 대한 개요';
+        sectionDescription.current = '국제문제 타이틀에 대한 개요를 써주세요';
         break;
       case 'section-3':
         sectionTitle.current = '분쟁지역';
-        sectionDescription.current = '분쟁지역 타이틀에 대한 개요';
+        sectionDescription.current = '분쟁지역 타이틀에 대한 개요를 써주세요';
         break;
       case 'section-4':
         sectionTitle.current = '참고자료';
-        sectionDescription.current = '참고자료 타이틀에 대한 개요';
+        sectionDescription.current = '참고자료 타이틀에 대한 개요를 써주세요';
         break;
       default:
         sectionTitle.current = '국내문제';
-        sectionDescription.current = '국내문제 타이틀에 대한 개요';
+        sectionDescription.current = '국내문제 타이틀에 대한 개요를 써주세요';
         break;
     }
   }
