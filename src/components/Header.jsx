@@ -1,22 +1,23 @@
 'use client';
+import { useState } from 'react';
 import { Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image'
-import steem from '../../public/steem.svg'
+import Image from 'next/image';
+import steem from '../../public/steem.png';
+import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import classNames from '@/services/classNames';
 
 const navigation = [
-  { name: 'Domestic', href: '/domestic', current: true },
-  { name: 'International', href: '/international', current: false },
-  { name: 'Confict Area', href: '/confict', current: false },
-  { name: 'Refrence', href: '/ref', current: false },
+  { name: '국내문제', href: '/domestic', tag: 'section-1' },
+  { name: '국제문제', href: '/international', tag: 'section-2' },
+  { name: '분쟁지역', href: '/confict', tag: 'section-3' },
+  { name: '참고', href: '/reference', tag: 'section-4' },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function Header() {
+  const [selected, setSelected] = useState('');
   return (
     <Disclosure as='nav' className='bg-gray-800'>
       {({ open }) => (
@@ -37,31 +38,23 @@ export default function Header() {
               </div>
               <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
                 <div className='flex flex-shrink-0 items-center'>
-                  <Image
-                    src={steem}
-                    width={150}
-                    height={40}
-                    alt='steemit'
-                    priority={false}
-                  />
+                  <Link href='/'>
+                    <Image
+                      src={steem}
+                      width={150}
+                      height={40}
+                      alt='steemit'
+                      priority={false}
+                    />
+                  </Link>
                 </div>
                 <div className='hidden sm:ml-6 sm:block'>
                   <div className='flex space-x-4'>
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? 'bg-gray-900 text-white'
-                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
+                    <Navbar
+                      navigation={navigation}
+                      selected={selected}
+                      onClick={setSelected}
+                    />
                   </div>
                 </div>
               </div>
@@ -154,7 +147,7 @@ export default function Header() {
                   className={classNames(
                     item.current
                       ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      : 'text-gray-300 hover:bg-gray-700 hover:text-white focus:bg-black',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
