@@ -5,8 +5,7 @@ import 'intersection-observer';
 import getDiscussionsByBlog from '@/services/getDiscussionByBlog';
 import BlogCard from './BlogCard';
 
-export default function BlogList({ tag }) {
-  console.log('BlogList tag: ', tag);
+export default function BlogList({ tag, sectionTitle, sectionDescription }) {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -16,8 +15,6 @@ export default function BlogList({ tag }) {
   const showMore = useRef(true);
   const targetRef = useRef(null);
   const blogStart = useRef(false);
-  const sectionTitle = useRef('');
-  const sectionDescription = useRef('');
 
   let i = 0;
   const handleIntersect = useCallback(
@@ -98,30 +95,6 @@ export default function BlogList({ tag }) {
       blogStart.current = false;
     }
   };
-  function changeTitle(tag) {
-    switch (tag) {
-      case 'section-2':
-        sectionTitle.current = '국제문제';
-        sectionDescription.current = '국제문제 타이틀에 대한 개요를 써주세요';
-        break;
-      case 'section-3':
-        sectionTitle.current = '분쟁지역';
-        sectionDescription.current = '분쟁지역 타이틀에 대한 개요를 써주세요';
-        break;
-      case 'section-4':
-        sectionTitle.current = '참고자료';
-        sectionDescription.current = '참고자료 타이틀에 대한 개요를 써주세요';
-        break;
-      default:
-        sectionTitle.current = '국내문제';
-        sectionDescription.current = '국내문제 타이틀에 대한 개요를 써주세요';
-        break;
-    }
-  }
-
-  useEffect(() => {
-    changeTitle(tag);
-  }, [tag]);
 
   useEffect(() => {
     initialfetchBlogs();
@@ -134,10 +107,10 @@ export default function BlogList({ tag }) {
           <div className='mx-auto max-w-7xl px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl lg:mx-0'>
               <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
-                {sectionTitle.current}
+                {sectionTitle}
               </h2>
               <p className='mt-2 text-lg leading-8 text-gray-600'>
-                {sectionDescription.current}
+                {sectionDescription}
               </p>
             </div>
             <div className='mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3'>

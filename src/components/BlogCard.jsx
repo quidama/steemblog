@@ -13,7 +13,7 @@ export default function BlogCard({
           }).format(Date.parse(created))}
         </p>
         <p className=' object-fill rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600'>
-          {author}
+          {sectionTitle}
         </p>
       </div>
       <div className='group relative'>
