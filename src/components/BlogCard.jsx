@@ -17,17 +17,10 @@ export default function BlogCard({
         </p>
       </div>
       <div className='group relative'>
-        {/* {JSON.parse(json_metadata).image && (
-              <img
-                src={JSON.parse(json_metadata).image[0]}
-                alt='Post'
-                className='h-10 w-10 rounded-full bg-gray-50'
-              />
-            )} */}
         <div>
           <h3 className='mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600 '>
             <span className='absolute inset-0' />
-            {title}
+            {title.replace(/^[^ ]* /, '')}
           </h3>
         </div>
 
