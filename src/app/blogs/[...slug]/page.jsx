@@ -3,7 +3,8 @@ import BlogList from '@/components/BlogList';
 import steem from 'steem';
 
 export default async function BlogPage({ params: { slug } }) {
-  console.log('Blogpage slug:', slug);
+  console.log('Blogpage slug[0]:', slug[0]);
+  console.log('Blogpage slug[1]:', slug[0]);
   if (slug.length === 1) {
     return (
       <section>

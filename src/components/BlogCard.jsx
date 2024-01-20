@@ -4,15 +4,15 @@ export default function BlogCard({
 }) {
   return (
     <article className='flex max-w-xl flex-col items-start justify-between overflow-hidden'>
-      <div className='flex justify-between items-center text-xs'>
-        <p className='text-gray-500'>
+      <div className='flex flex-row justify-between items-center text-xs'>
+        <p className='text-gray-500 flex-grow'>
           {new Intl.DateTimeFormat('ko-KR', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
           }).format(Date.parse(created))}
         </p>
-        <p className='rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600'>
+        <p className=' object-fill rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600'>
           {author}
         </p>
       </div>

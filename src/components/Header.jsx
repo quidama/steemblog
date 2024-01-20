@@ -10,10 +10,10 @@ import Navbar from '@/components/Navbar';
 import classNames from '@/services/classNames';
 
 const navigation = [
-  { name: '국내문제', href: '/domestic', tag: 'section-1' },
-  { name: '국제문제', href: '/international', tag: 'section-2' },
-  { name: '분쟁지역', href: '/confict', tag: 'section-3' },
-  { name: '참고', href: '/reference', tag: 'section-4' },
+  { name: '국내문제', tag: 'section-1' },
+  { name: '국제문제', tag: 'section-2' },
+  { name: '분쟁지역', tag: 'section-3' },
+  { name: '참고', tag: 'section-4' },
 ];
 
 export default function Header() {

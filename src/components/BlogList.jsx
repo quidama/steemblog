@@ -100,15 +100,15 @@ export default function BlogList({ tag }) {
   };
   function changeTitle(tag) {
     switch (tag) {
-      case 'section-3':
+      case 'section-2':
         sectionTitle.current = '국제문제';
         sectionDescription.current = '국제문제 타이틀에 대한 개요';
         break;
-      case 'section-4':
+      case 'section-3':
         sectionTitle.current = '분쟁지역';
         sectionDescription.current = '분쟁지역 타이틀에 대한 개요';
         break;
-      case 'section-5':
+      case 'section-4':
         sectionTitle.current = '참고자료';
         sectionDescription.current = '참고자료 타이틀에 대한 개요';
         break;
